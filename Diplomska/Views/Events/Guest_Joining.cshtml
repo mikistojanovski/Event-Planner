@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Diplomska.Areas.Identity.Data
+@model Diplomska.ViewModels.GuestSearch
+@inject UserManager<DiplomskaUser> UserManager
+
+@{
+    ViewData["Title"] = "Guest_Joining";
+
+}
+<h3 class="text-light text-center">@Model.Event.Title</h3>
+<hr/>
+
+<form class="text-light" asp-controller="Events" asp-action="Guest_Joining" asp-route-userID=@UserManager.GetUserName(User) style="align-content:center">
+
+    <p>
+        Username: <input class="bg-secondary text-ligth" type="text" asp-for="SearchString" />
+
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="bg-secondary text-ligth text-center" style="color:aliceblue">
+                @Html.DisplayNameFor(model => model.Guests[0].Username)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Guests)
+        {
+            <tr>
+                <td class="bg-secondary text-ligth text-center" style="color:aliceblue">
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

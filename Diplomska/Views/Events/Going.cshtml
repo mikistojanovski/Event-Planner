@@ -1,0 +1,83 @@
+﻿@model Diplomska.ViewModels.AddInterest;
+
+@{
+    ViewData["Title"] = "Going";
+}
+
+<div style="color:aliceblue">
+
+    <div>
+    <span style="float:right">
+        <dl class="row">
+            <dd class="col-sm-10">
+                <img src="~/images/@Model.Event.Poster" height="700" width="450" style="margin-right:2cm;" asp-append-version="true"></img>
+            </dd>
+        </dl>
+    </span>
+        
+    </div>
+    <h1>@Model.Event.Title</h1>
+    <hr />
+    <div>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Event.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Event.Date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Event.Time)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Event.Time)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Event.Location)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Event.Location)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Event.Genre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Event.Genre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Event.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Event.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Event.Hoster)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Event.Hoster.Username)
+        </dd>
+
+    </div>
+
+
+</div>
+<div>
+  
+     @if (Model.Interest==null || Model.Interest==0 )
+            {
+        <form asp-action="Going">
+            <input type="hidden" asp-for="Id" />
+            <input  style="color:aqua" type="submit" value="Going :)" class="btn btn-success" /> |
+            <a asp-action="Index">Back to List</a>
+        </form>
+            }
+    @if (Model.Interest ==1)
+    {
+        <form asp-action="Going">
+            <input type="hidden" asp-for="Id" />
+            <input style="color:aqua" type="submit" value="Cancelling :(" class="btn btn-danger" /> |
+            <a  style="color:aqua" asp-action="Index">Back to List</a>
+        </form>
+    }
+</div>
+

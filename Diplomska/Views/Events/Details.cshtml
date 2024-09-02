@@ -1,0 +1,77 @@
+﻿@using Diplomska.Areas.Identity.Data
+@using Microsoft.AspNetCore.Identity
+@model Diplomska.ViewModels.Edit_EventPicture
+@inject UserManager<DiplomskaUser> UserManager
+@inject SignInManager<DiplomskaUser> SignInManager
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 style="color:aliceblue; font-size:25px">Details For </h1>
+
+<div>
+
+    <span style="float:right">
+        <dl class="row">
+            <dd class="col-sm-10">
+                <img src="~/images/@Model.Event.Poster" height="700" width="450" style="margin-right:2cm;" asp-append-version="true"></img>
+            </dd>
+        </dl>
+    </span>
+    <div style="color:aliceblue;text-align:justify;font-size:20px">
+
+
+        <h2 class="col-sm-10" style="font-size:50px">
+            @Html.DisplayFor(model => model.Event.Title)
+        </h2>
+        <hr />
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Event.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Event.Date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Event.Time)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Event.Time)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Event.Location)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Event.Location)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Event.Genre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Event.Genre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Event.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Event.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Event.Hoster)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Event.Hoster.Username)
+        </dd>
+
+    </div>
+
+
+</div>
+<div style="margin-top:20px; color:aqua">
+    @if (@UserManager.GetUserName(User) == Model.Event.HostName)
+    {
+
+        <a asp-action="Edit" asp-route-id="@Model?.Event.Id" class="btn btn-primary " style=" color:aqua">Edit</a>
+        <span>|</span>
+    }
+    <a style=" color:aqua"  asp-action="Index">Back to List</a>
+</div>

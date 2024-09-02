@@ -1,0 +1,65 @@
+﻿@using Diplomska.Areas.Identity.Data
+@using Microsoft.AspNetCore.Identity
+@model Diplomska.ViewModels.EventSearch
+
+@inject UserManager<DiplomskaUser> UserManager
+@inject SignInManager<DiplomskaUser> SignInManager
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="text-light" style="text-align:center">
+<h2 style="align-content:center">
+    Events                                              
+
+</h2>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+        <a style="color:aqua" asp-action="Create" class="btn btn-danger">Add New Event</a>
+        }
+
+</div>
+
+
+<div class="container">
+    <div class="card-deck row ">
+@foreach (var item in Model.Events) {
+            var photoPath = "~/images/" + (item.Poster ?? "party_icon.jpg");
+
+                <div class="card m-3 bg-secondary h-100 shadow-lg" style="height:auto min-width: 18rem; max-width:30.5%;">
+                    <div class="card-header text-light align-content-center text-center">
+                            <h3>  @Html.DisplayFor(modelItem => item.Title)</h3>
+                    </div>
+
+                    <img class="card-img-top img-fluid imageThumbnail" src="@photoPath" asp-append-version="true" />
+               
+                <div class="card-body text-center text-light">
+                    @Html.DisplayFor(modelItem => item.Date)
+                    @Html.DisplayFor(modelItem => item.Time)
+                    @Html.DisplayFor(modelItem => item.Location)
+                </div>
+                <div class="card-footer text-center" >
+                    <a style="color:aqua" asp-action="Guest_Joining" asp-route-id="@item.Id">Guest List</a>
+                <a> |</a>
+                    <a style ="color:aqua" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                <a> |</a>
+                        <a style="color:aqua"  asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+
+                <a> |</a>
+                        <a style="color:aqua" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                }
+            </div>
+            @if (User.Identity.IsAuthenticated )
+            {
+                <div class="card-footer text-center">
+                        <a style ="color:aqua" asp-action="Going" asp-route-id="@item.Id" class="btn btn-primary">Will You Attend?</a>
+                   
+                </div>
+                }
+            </div>
+            }
+
+</div>
+</div>
