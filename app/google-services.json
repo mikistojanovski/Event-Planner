@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "426528992244",
+    "firebase_url": "https://diplomska-11f45-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "diplomska-11f45",
+    "storage_bucket": "diplomska-11f45.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:426528992244:android:25662215e50488513167a1",
+        "android_client_info": {
+          "package_name": "com.example.diplomska3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGzeYfx8CGFqRMrXw1ouzHHJ90a0kC4cQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
